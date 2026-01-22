@@ -257,7 +257,7 @@ This project is proprietary / demo-ready.
 Reuse or modification depends on project agreement.
 
 
-## 📜 Available Scripts
+## 📜 Installation
 
 - `npm run dev` – Start development server
 - `npm run build` – Build for production
