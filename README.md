@@ -1,50 +1,243 @@
-# React + TypeScript + Vite
+🎮 Rock Paper Scissors – Web Game (React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time Rock Paper Scissors game built with React, TypeScript, WebSockets, and Canvas-style animations.
+The game includes betting logic, sound effects, animations, live balance updates, and a clean modular UI.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Rock / Paper / Scissors gameplay
 
-## Expanding the ESLint configuration
+- Real-time results via WebSocket
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Betting system with preset & manual controls
 
-- Configure the top-level `parserOptions` property like this:
+- Animated shuffling and result reveal
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Sound effects (win / lose / draw / shuffle)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Game settings (sound toggle, help dialog)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Win / Tie / Loss tracking
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Responsive UI components
+
+🧠 Game Flow
+
+- Player selects a bet amount
+
+- Player clicks Rock, Paper, or Scissors
+
+- Game shuffles selections with animation
+
+- Selection is sent to backend via WebSocket
+
+- Server returns result:
+
+- Player choice
+
+- Computer choice
+
+- Win / Lose / Draw
+
+- Updated balance
+
+- UI updates scores, balance, and plays sound
+
+- Result modal shows outcome and auto-resets
+
+🗂️ Project Structure (Key Files)
+src/
+├── components/
+│   ├── MainGamePage.tsx
+│   ├── SelectionResults.tsx
+│   ├── RPSControls.tsx
+│   ├── RpsSettingDialog.tsx
+│   ├── HowToPlay.tsx
+│
+├── Hooks/
+│   └── useRPSSound.ts
+│
+├── Socket/
+│   └── socket.ts
+│
+├── utils/
+│   └── types.ts
+│
+├── assets/
+│   └── img/
+
+📄 Component Documentation
+- MainGamePage.tsx
+
+- Main game container and logic controller
+
+- Responsibilities:
+
+- WebSocket connection & communication
+
+- Game state management (wins, ties, losses)
+
+- UI state (animations, modals, settings)
+
+- Bet handling
+
+- Result processing
+
+- Sound triggers
+
+- Key logic:
+
+- Sends game data to backend
+
+- Listens for server responses
+
+- Updates UI based on results
+
+- Controls game timing and reset cycle
+
+- SelectionResults.tsx
+
+- Displays game results and selection buttons
+
+Props include:
+
+- Wins, Ties, Losses
+
+- userChoice, compChoice
+
+- userResult, compResult
+
+- Animation flags (isShuffling, boltAppear, easeInOut)
+
+- handleClick (user selection handler)
+
+Responsibilities:
+
+- Renders player & computer choices
+
+- Handles selection clicks
+
+- Shows animated lightning effect
+
+- Displays win/tie/loss counters
+
+RPSControls.tsx
+
+- Bet amount controls
+
+Features:
+
+- Preset bet buttons (20, 50, 100, 500, 1000)
+
+- Manual increase/decrease buttons
+
+- Input validation (min 20, max 1000)
+
+Props:
+
+- betAmount
+
+- handleBetAmount
+
+- onSetBetAmount
+
+RpsSettingDialog.tsx
+
+- Game settings modal
+
+Features:
+
+- Sound ON / OFF toggle
+
+- Help dialog launcher
+
+- Click-outside-to-close behavior
+
+Uses:
+
+- useRef + useEffect for outside click detection
+
+HowToPlay.tsx
+
+-Help / instructions overlay
+
+Explains:
+
+- Betting rules
+
+How to play
+
+- Win conditions
+
+- Score tracking
+
+- Triggered from the settings dialog.
+
+🔊 Sound System
+
+- Handled via a custom hook:
+
+- useRPSSound(isMuted, loopShuffle)
+
+
+Sounds triggered for:
+
+- Button click
+
+- Shuffle animation
+
+- Win
+
+- Loss
+
+- Draw
+
+🌐 WebSocket Communication
+
+Outgoing payload:
+
+{
+msisdn: string,
+amount: number,
+selection: "Rock" | "Paper" | "Scissors"
+}
+
+
+Incoming response:
+
+{
+selection: string,
+computer: string,
+message: "You Won" | "You Lost" | "It's a Draw",
+winnings: number,
+Balance: string
+}
+
+🧪 Tech Stack
+
+- React
+
+- TypeScript
+
+- WebSockets
+
+- CSS animations
+
+- Custom hooks
+
+- Functional components
+
+📌 Notes
+
+- Game logic is UI-driven but result-validated by backend
+
+- All animations are state-controlled
+
+- UI resets automatically after each round
+
+- Code is modular and easy to extend (history, leaderboard, etc.)
+
+📄 License
+
+This project is proprietary / demo-ready.
+Reuse or modification depends on project agreement.
