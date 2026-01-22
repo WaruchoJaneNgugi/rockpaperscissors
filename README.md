@@ -1,9 +1,19 @@
-🎮 Rock Paper Scissors – Web Game (React + TypeScript)
+# 🚀 Quick Start
+
+# 🎮 Rock Paper Scissors – Web Game (React + TypeScript)
 
 A real-time Rock Paper Scissors game built with React, TypeScript, WebSockets, and Canvas-style animations.
 The game includes betting logic, sound effects, animations, live balance updates, and a clean modular UI.
 
-🚀 Features
+
+## 🎨 Preview
+
+![Game Screenshot](/src/assets/rpsGame.png)
+
+[Live Demo](https://rockpaperscissors-jade-sigma.vercel.app/)
+
+
+## 🚀 Features
 
 - Rock / Paper / Scissors gameplay
 
@@ -21,7 +31,7 @@ The game includes betting logic, sound effects, animations, live balance updates
 
 - Responsive UI components
 
-🧠 Game Flow
+# 🧠 Game Flow
 
 - Player selects a bet amount
 
@@ -45,28 +55,32 @@ The game includes betting logic, sound effects, animations, live balance updates
 
 - Result modal shows outcome and auto-resets
 
-🗂️ Project Structure (Key Files)
+### **Future Improvements**
+## 🔮 Roadmap 
+
+- Player vs Player mode
+- Game history log
+- Themed skins
+- Tournament mode
+
+
+## 🗂️ Project Structure (Key Files)
 src/
 ├── components/
-│   ├── MainGamePage.tsx
-│   ├── SelectionResults.tsx
-│   ├── RPSControls.tsx
-│   ├── RpsSettingDialog.tsx
-│   ├── HowToPlay.tsx
-│
-├── Hooks/
-│   └── useRPSSound.ts
-│
-├── Socket/
-│   └── socket.ts
-│
+│   ├── MainGamePage.tsx      # Main game container and logic controller
+│   ├── SelectionResults.tsx  # Displays results and selection buttons
+│   ├── RPSControls.tsx       # Bet amount controls
+│   ├── RpsSettingDialog.tsx  # Game settings modal
+│   └── HowToPlay.tsx         # Help/instructions overlay
+├── hooks/
+│   └── useRPSSound.ts        # Custom sound hook
+├── socket/
+│   └── socket.ts             # WebSocket connection management
 ├── utils/
-│   └── types.ts
-│
-├── assets/
-│   └── img/
-
-📄 Component Documentation
+│   └── types.ts              # TypeScript type definitions
+└── assets/
+└── img/                  # Image assets
+## 📄 Component Documentation
 - MainGamePage.tsx
 
 - Main game container and logic controller
@@ -99,7 +113,7 @@ src/
 
 - Displays game results and selection buttons
 
-Props include:
+### Props include:
 
 - Wins, Ties, Losses
 
@@ -111,7 +125,7 @@ Props include:
 
 - handleClick (user selection handler)
 
-Responsibilities:
+### Responsibilities:
 
 - Renders player & computer choices
 
@@ -121,11 +135,11 @@ Responsibilities:
 
 - Displays win/tie/loss counters
 
-RPSControls.tsx
+## RPSControls.tsx
 
 - Bet amount controls
 
-Features:
+## Features:
 
 - Preset bet buttons (20, 50, 100, 500, 1000)
 
@@ -133,7 +147,7 @@ Features:
 
 - Input validation (min 20, max 1000)
 
-Props:
+## Props:
 
 - betAmount
 
@@ -141,11 +155,11 @@ Props:
 
 - onSetBetAmount
 
-RpsSettingDialog.tsx
+## RpsSettingDialog.tsx
 
 - Game settings modal
 
-Features:
+### Features:
 
 - Sound ON / OFF toggle
 
@@ -153,19 +167,19 @@ Features:
 
 - Click-outside-to-close behavior
 
-Uses:
+### Uses:
 
 - useRef + useEffect for outside click detection
 
-HowToPlay.tsx
+## HowToPlay.tsx
 
 -Help / instructions overlay
 
-Explains:
+### Explains:
 
 - Betting rules
 
-How to play
+## How to play
 
 - Win conditions
 
@@ -173,14 +187,14 @@ How to play
 
 - Triggered from the settings dialog.
 
-🔊 Sound System
+##🔊 Sound System
 
 - Handled via a custom hook:
 
 - useRPSSound(isMuted, loopShuffle)
 
 
-Sounds triggered for:
+### Sounds triggered for:
 
 - Button click
 
@@ -192,9 +206,9 @@ Sounds triggered for:
 
 - Draw
 
-🌐 WebSocket Communication
+## 🌐 WebSocket Communication
 
-Outgoing payload:
+### Outgoing payload:
 
 {
 msisdn: string,
@@ -203,7 +217,7 @@ selection: "Rock" | "Paper" | "Scissors"
 }
 
 
-Incoming response:
+### Incoming response:
 
 {
 selection: string,
@@ -213,7 +227,7 @@ winnings: number,
 Balance: string
 }
 
-🧪 Tech Stack
+### 🧪 Tech Stack
 
 - React
 
@@ -227,7 +241,7 @@ Balance: string
 
 - Functional components
 
-📌 Notes
+### 📌 Notes
 
 - Game logic is UI-driven but result-validated by backend
 
@@ -237,7 +251,33 @@ Balance: string
 
 - Code is modular and easy to extend (history, leaderboard, etc.)
 
-📄 License
+# 📄 License
 
 This project is proprietary / demo-ready.
 Reuse or modification depends on project agreement.
+
+
+## 📜 Available Scripts
+
+- `npm run dev` – Start development server
+- `npm run build` – Build for production
+- `npm run lint` – Run ESLint
+
+```bash
+git clone <repo-url>
+cd rock-paper-scissors
+npm install
+npm run dev
+
+```
+
+## Prerequisites
+- Node.js 18+
+- WebSocket backend connection
+
+## 🧪 Testing
+
+Run unit tests:
+```bash
+npm test
+```
